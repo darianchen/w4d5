@@ -33,14 +33,25 @@ end
 
 
 def anagram?(str1,str2)
-  hash1 = Hash.new(0)
-  hash2 = Hash.new(0)
+  # hash1 = Hash.new(0)
+  # hash2 = Hash.new(0)
 
-  str1.chars.each { |el| hash1[el] += 1 }
-  str2.chars.each { |el| hash2[el] += 1 }
+  # str1.chars.each { |el| hash1[el] += 1 }
+  # str2.chars.each { |el| hash2[el] += 1 }
   
-  hash1 == hash2
+  # hash1 == hash2
 
+  hash = Hash.new(0)
+  str1.chars.each { |el| hash[el] += 1 }
+  str2.chars.each  do  |el| 
+    if hash[el] == 0 || hash[el].nil?
+      return false  
+    else
+      hash[el] -= 1
+    end 
+  end
+  
+  hash.all? { |k,v| v.zero? }
 
 end
 
