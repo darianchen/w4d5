@@ -32,6 +32,21 @@ def third_anagram?(str1, str2)
 end
 
 
+def anagram?(str1,str2)
+  hash1 = Hash.new(0)
+  hash2 = Hash.new(0)
+
+  str1.chars.each { |el| hash1[el] += 1 }
+  str2.chars.each { |el| hash2[el] += 1 }
+  
+  hash1 == hash2
+
+
+end
+
+
+
+
 
 p anagram?("gizmo", "sally")    #=> false
 p anagram?("elvis", "lives")    #=> true
