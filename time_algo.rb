@@ -35,16 +35,16 @@ def largest_contiguous_subsum_phase_1(arr)
 end
 
 def largest_contiguous_subsum_phase_2(arr)
-  positives = arr.select { |el| el > 0 }
+  positives = arr.select { |el| el > 0 } # n
 
-  if !positives.empty? 
-    return positives.sum
+  if !positives.empty? # 1
+    return positives.sum # n
   else
-    max = arr[0]
-    arr.each do |num|
-      max = num if num > max
+    max = arr[0] # 1
+    arr.each do |num| # n
+      max = num if num > max # 1
     end
-    max
+    return max # 1
   end
 end
 
