@@ -17,3 +17,26 @@ def my_min_phase_2(arr)
 end
 
 # p my_min_phase_2(list)  # =>  -5
+
+#phase 1
+def largest_contiguous_subsum(arr)
+  sub = []
+  arr.each_with_index do |ele1, i|
+    arr.each_with_index do |ele2, j|
+      sub << arr[i..j] if !arr[i..j].empty?
+    end
+  end
+  
+  sum = sub[0].sum
+  sub.each do |subarr|
+    sum = subarr.sum if subarr.sum > sum
+  end
+  sum
+end
+
+
+list = [5, 3, -7]
+p largest_contiguous_subsum(list) # => 8
+
+list = [-5, -1, -3]
+p largest_contiguous_subsum(list) # => -1 (from [-1])
