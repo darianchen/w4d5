@@ -24,10 +24,10 @@ def two_sum?(arr, target_sum)
     hash = Hash.new
 
     arr.each do |ele|
-        if hash[ele].nil?
-            hash[target_sum - ele] = 1
+        if hash[ele].nil? #doesn't exist
+            hash[target_sum - ele] = 1 
         else
-            return true if hash[ele]
+            return true 
         end
     end
     false
