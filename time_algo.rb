@@ -19,7 +19,7 @@ end
 # p my_min_phase_2(list)  # =>  -5
 
 #phase 1
-def largest_contiguous_subsum(arr)
+def largest_contiguous_subsum_phase_1(arr)
   sub = []
   arr.each_with_index do |ele1, i|
     arr.each_with_index do |ele2, j|
@@ -34,9 +34,23 @@ def largest_contiguous_subsum(arr)
   sum
 end
 
+def largest_contiguous_subsum_phase_2(arr)
+  positives = arr.select { |el| el > 0 }
+
+  if !positives.empty? 
+    return positives.sum
+  else
+    max = arr[0]
+    arr.each do |num|
+      max = num if num > max
+    end
+    max
+  end
+end
+
 
 list = [5, 3, -7]
-p largest_contiguous_subsum(list) # => 8
+p largest_contiguous_subsum_phase_2(list) # => 8
 
 list = [-5, -1, -3]
-p largest_contiguous_subsum(list) # => -1 (from [-1])
+p largest_contiguous_subsum_phase_2(list) # => -1 (from [-1])
