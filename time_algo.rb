@@ -35,17 +35,27 @@ def largest_contiguous_subsum_phase_1(arr)
 end
 
 def largest_contiguous_subsum_phase_2(arr)
-  positives = arr.select { |el| el > 0 } # n
+  return arr.max if arr.all? { |num| num < 0 }
+  return arr.sum if arr.all? { |num| num > 0 }
+  largest = arr.min
+  current = 0
+  
+  i = 0
+  while i < arr.length
+  current = current + arr[i]
 
-  if !positives.empty? # 1
-    return positives.sum # n
-  else
-    max = arr[0] # 1
-    arr.each do |num| # n
-      max = num if num > max # 1
-    end
-    return max # 1
+  if largest < current
+    largest = current
   end
+
+  if current < 0
+    current = 0
+  end
+
+  i += 1
+  end
+
+  largest
 end
 
 
@@ -54,3 +64,6 @@ p largest_contiguous_subsum_phase_2(list) # => 8
 
 list = [-5, -1, -3]
 p largest_contiguous_subsum_phase_2(list) # => -1 (from [-1])
+
+list = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+p largest_contiguous_subsum_phase_2(list) # 6
