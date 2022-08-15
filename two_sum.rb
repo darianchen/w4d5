@@ -21,16 +21,26 @@ def okay_two_sum?(arr, target_sum)
 end
 
 def two_sum?(arr, target_sum)
-    hash = Hash.new
+    # hash = Hash.new
+
+    # arr.each do |ele|
+    #     if hash[ele].nil? #doesn't exist
+    #         hash[target_sum - ele] = 1 
+    #     else
+    #         return true 
+    #     end
+    # end
+    # false
+
+    hash = {}
 
     arr.each do |ele|
-        if hash[ele].nil? #doesn't exist
-            hash[target_sum - ele] = 1 
-        else
-            return true 
-        end
+        return true if hash[target_sum - ele]
+        hash[ele] = true
     end
     false
+
+
 end
 
 arr = [0, 1, 5, 7]
